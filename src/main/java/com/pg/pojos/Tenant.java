@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @Entity
-@Table(name="customers")
+@Table(name="tenants")
 public class Tenant {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -46,7 +46,7 @@ public class Tenant {
 	
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(columnDefinition = "DATE DEFAULT CURRENT_DATE")
+	@Column(columnDefinition = "DATE")
 	private LocalDate registrationDate;
 	
 	/*
@@ -71,10 +71,9 @@ public class Tenant {
 		super();
 	}
 
-	public Tenant(Integer tenantId, String firstName, String lastName, String contactNumber, String emailId,
+	public Tenant(String firstName, String lastName, String contactNumber, String emailId,
 			LocalDate registrationDate) {
 		super();
-		this.tenantId = tenantId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.contactNumber = contactNumber;
