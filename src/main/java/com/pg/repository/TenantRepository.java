@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.pg.pojos.Tenant;
 import com.pg.pojos.Login;
 
-public interface TenantRepository extends JpaRepository<Tenant , Integer> {
+public interface TenantRepository extends JpaRepository<Tenant, Integer> {
 	
 	
 

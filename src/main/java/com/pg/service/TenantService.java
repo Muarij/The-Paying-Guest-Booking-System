@@ -13,10 +13,9 @@ public class TenantService {
 	@Autowired
 	TenantRepository tenantrepo;
 	
-	public Tenant save(Tenant obj)
-	{
-		return tenantrepo.save(obj);
-	}
+	public Tenant save(Tenant tenant) {
+        return tenantrepo.save(tenant);
+    }
 	
 	public List<Tenant> getAll()
 	{

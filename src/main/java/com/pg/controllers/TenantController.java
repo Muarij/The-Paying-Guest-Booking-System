@@ -2,6 +2,7 @@ package com.pg.controllers;
 
 import java.time.LocalDate;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +28,12 @@ public class TenantController {
 	private TenantService tenantService;
 	
 	@PostMapping("/register")
-	public Tenant registerTenant(@RequestBody RegisterTenant rtenant)
+	public Tenant registerTenant(@RequestBody Tenant rtenant)
 	{
 		// String firstName, String lastName, String contactNumber, String emailId,
 		// LocalDate registrationDate
-		Tenant tenant=new Tenant(rtenant.getFirstName(), rtenant.getLastName(), rtenant.getContactNumber(),rtenant.getEmailId(), rtenant.getRegistrationDate());
-		Tenant persistenttenant=tenantService.save(tenant);
-			return persistenttenant;
+		//Tenant tenant=new Tenant(rtenant.getFirstName(), rtenant.getLastName(), rtenant.getContactNumber(),rtenant.getEmailId(), rtenant.getRegistrationDate());
+		return tenantService.save(rtenant)  ;
 	}
 	
 	@GetMapping("/getAll")
