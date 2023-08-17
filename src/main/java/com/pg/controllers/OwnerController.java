@@ -2,7 +2,6 @@ package com.pg.controllers;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,38 +13,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pg.pojos.RegisterTenant;
-import com.pg.pojos.Tenant;
-import com.pg.service.TenantService;
+import com.pg.pojos.Owner;
+import com.pg.service.OwnerService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/tenant")
-public class TenantController {
+@RequestMapping("/owner")
+public class OwnerController {
 
     @Autowired
-    private TenantService tenantService;
+    private OwnerService ownerService;
 
     @PostMapping("/register")
-    public Tenant registerTenant(@RequestBody Tenant tenant) {
-        //Tenant tenant = new Tenant(rtenant.getFirstName(), rtenant.getLastName(), rtenant.getContactNumber(), rtenant.getEmailId(), rtenant.getRegistrationDate(), );
-        return tenantService.save(tenant);
+    public Owner registerOwner(@RequestBody Owner owner) {
+        return ownerService.save(owner);
     }
 
     @GetMapping("/getAll")
-    public List<Tenant> getAllTenants() {
-        return tenantService.getAll();
+    public List<Owner> getAllOwners() {
+        return ownerService.getAll();
     }
     
     @PutMapping("/update/{id}")
-    public Tenant updateTenant(@RequestBody Tenant tenant, @PathVariable Long id) {
-        return tenantService.update(id, tenant);
+    public Owner updateOwner(@RequestBody Owner owner, @PathVariable Integer id) {
+        return ownerService.update(id, owner);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteTenant(@PathVariable Long id) {
-        tenantService.delete(id);
+    public void deleteOwner(@PathVariable Integer id) {
+        ownerService.delete(id);
     }
+    
+	/*
+	 * @GetMapping("/getAllTenants") public List<Tenants> getAllTenants() { return
+	 * ownerService.getAllTenants(); }
+	 */
     
     
 }

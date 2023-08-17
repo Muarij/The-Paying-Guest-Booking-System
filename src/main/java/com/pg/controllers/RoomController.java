@@ -2,7 +2,6 @@ package com.pg.controllers;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,38 +13,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pg.pojos.RegisterTenant;
-import com.pg.pojos.Tenant;
-import com.pg.service.TenantService;
+import com.pg.pojos.Room;
+import com.pg.service.RoomService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/tenant")
-public class TenantController {
+@RequestMapping("/room")
+public class RoomController {
 
     @Autowired
-    private TenantService tenantService;
+    private RoomService roomService;
 
-    @PostMapping("/register")
-    public Tenant registerTenant(@RequestBody Tenant tenant) {
-        //Tenant tenant = new Tenant(rtenant.getFirstName(), rtenant.getLastName(), rtenant.getContactNumber(), rtenant.getEmailId(), rtenant.getRegistrationDate(), );
-        return tenantService.save(tenant);
+    @PostMapping("/create")
+    public Room createRoom(@RequestBody Room room) {
+        return roomService.save(room);
     }
 
     @GetMapping("/getAll")
-    public List<Tenant> getAllTenants() {
-        return tenantService.getAll();
+    public List<Room> getAllRooms() {
+        return roomService.getAll();
     }
-    
+
     @PutMapping("/update/{id}")
-    public Tenant updateTenant(@RequestBody Tenant tenant, @PathVariable Long id) {
-        return tenantService.update(id, tenant);
+    public Room updateRoom(@RequestBody Room room, @PathVariable Integer id) {
+        return roomService.update(id, room);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteTenant(@PathVariable Long id) {
-        tenantService.delete(id);
+    public void deleteRoom(@PathVariable Integer id) {
+        roomService.delete(id);
     }
-    
-    
 }
+
+
